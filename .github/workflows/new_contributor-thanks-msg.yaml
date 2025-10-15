@@ -113,7 +113,7 @@ jobs:
             let imageUrl = ``;
             let messageHeader = ``;
 
-            if (mergedCount == 50 {
+            if (mergedCount == 50) {
               imageUrl = images.fiftieth;
               messageHeader = `🏆 Amazing work @${login}! You've hit **50 merged PRs** — you're on fire!`;
             } else if (mergedCount == 25) {
