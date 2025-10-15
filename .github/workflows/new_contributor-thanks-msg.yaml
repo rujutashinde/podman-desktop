@@ -1,4 +1,28 @@
+#
+# Copyright (C) 2023-2024 Red Hat, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
+
 name: Thank Contributors on Merge
+
+env:
+  # temp images picked within the repo, these will change based on what we decide as new images and a location to store them
+  IMAGE_1ST: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/website/static/img/blog/podman-desktop-release-1.7/renovations.png
+  IMAGE_10TH: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/website/static/img/blog/podman-desktop-release-1.6/santaseal.png
+  IMAGE_25TH: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/website/static/img/blog/podman-desktop-release-1.5/onboarding-selkies.png
+  IMAGE_50TH: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/website/static/img/blog/podman-desktop-release-1.4/juggling.png
 
 on:
   pull_request_target:
@@ -11,7 +35,7 @@ permissions:
 
 jobs:
   thank-you-contributor:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: github.event.pull_request.merged == true
     steps:
       - name: Checkout repo
@@ -27,6 +51,7 @@ jobs:
         id: check-maintainer
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
             const login = context.payload.pull_request.user.login;
@@ -37,27 +62,24 @@ jobs:
 
             // Extract all GitHub usernames (strip leading @)
             const usernames = [...content.matchAll(/@([a-zA-Z0-9-]+)/g)].map(m => m[1].toLowerCase());
-            console.log("Parsed maintainers:", usernames);
 
             if (usernames.includes(login.toLowerCase())) {
-              console.log(`User ${login} is a maintainer — skipping thank-you message.`);
               core.setOutput('isMaintainer', 'true');
             } else {
-              console.log(`User ${login} is NOT a maintainer.`);
               core.setOutput('isMaintainer', 'false');
             }
 
-      - name: Send thank-you message based on contribution level
+      - name: Calculate contribution level
+        id: calc-prs
         if: steps.check-maintainer.outputs.isMaintainer == 'false'
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const login = context.payload.pull_request.user.login;
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            const branch = 'main';
 
-            // Fetch *all merged PRs* by this user in this repo
             const { data: allPRs } = await github.rest.pulls.list({
               owner,
               repo,
@@ -65,27 +87,43 @@ jobs:
               per_page: 100
             });
 
-            // Count how many merged PRs they have
-            const mergedCount = allPRs.filter(pr => pr.user.login === login && pr.merged_at).length;
-            console.log(`Merged PR count for ${login}: ${mergedCount}`);
+            const mergedCount = allPRs.filter(pr => pr.user.login === login && pr.merged_at).length;    
+            return mergedCount;     
 
-            // Pick the correct sticker and message
-            // This part of the code will change as we need to have a separate repo for the images
-            // will modify this code when we decide on what images to use as stickers
+      - name: Send thank-you message 
+        if: steps.check-maintainer.outputs.isMaintainer == 'false'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PODMAN_DESKTOP_BOT_TOKEN }}
+          script: |
+            const login = context.payload.pull_request.user.login;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const branch = 'main';
+            const mergedCount = Number("${{ steps.calc-prs.outputs.result }}");
+
+            // Dynamically read image URLs from env
+            const images = {
+              first: process.env.IMAGE_1ST,
+              tenth: process.env.IMAGE_10TH,
+              twentyfifth: process.env.IMAGE_25TH,
+              fiftieth: process.env.IMAGE_50TH
+            };
+
             let imageUrl = ``;
             let messageHeader = ``;
 
-            if (mergedCount == 50) {
-              imageUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/website/static/img/blog/podman-desktop-release-1.4/juggling.png`;
+            if (mergedCount == 25) {
+              imageUrl = images.fiftieth;
               messageHeader = `🏆 Amazing work @${login}! You've hit **50 merged PRs** — you're on fire!`;
-            } else if (mergedCount == 25) {
-              imageUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/website/static/img/blog/podman-desktop-release-1.5/onboarding-selkies.png`;
-              messageHeader = `🌟 Awesome @${login}! **25 merged PRs** — great momentum!`;
+            } else if (mergedCount == 20) {
+              imageUrl = images.twentyfifth;
+              messageHeader = `🌟 Awesome @${login}! ** 25 merged PRs** — great momentum!`;
             } else if (mergedCount == 10) {
-              imageUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/website/static/img/blog/podman-desktop-release-1.6/santaseal.png`;
-              messageHeader = `🚀 Impressive @${login}! **10 merged PRs** — you're making an impact!`;
+              imageUrl = images.tenth;
+              messageHeader = `🚀 Impressive @${login}! ** 10 merged PRs** — you're making an impact!`;
             } else if (mergedCount == 1) {
-              imageUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/website/static/img/blog/podman-desktop-release-1.7/renovations.png`;
+              imageUrl = images.first;
               messageHeader = `🎉 Huge thanks @${login} for your **first contribution**!! 🎉`;
             }
 
@@ -102,6 +140,4 @@ jobs:
                 repo,
                 body: message
               });
-            } else {
-              console.log("No messageHeader or imageUrl found — skipping comment.");
-            }
+            } 
