@@ -11,11 +11,11 @@ hide_table_of_contents: false
 
 ## A Year of Growth and Gratitude
 
-Welcome to the journey of **Podman Desktop in 2025**, a year that marked incredible growth, deeper integrations, and continued community collaboration. In a year of sustained development and collaboration. This year Podman Desktop **closed 1,669 issues, merged 2,814 pull requests, and welcomed 28 new contributors**, with even more activity happening across extension repositories.These contributions powered faster releases, higher stability, and a tool shaped directly by real-world developer needs.
+Welcome to the journey of **Podman Desktop in 2025**, a year that marked incredible growth, deeper integrations, and continued community collaboration.
 
-**Podman Desktop** brings the power of containers and Kubernetes to your local environment, helping developers build, run, and manage containerized applications with an intuitive interface. Whether on Linux, macOS or Windows, it bridges the gap between command-line precision and visual usability.
+This year Podman Desktop **closed 1,669 issues, merged 2,814 pull requests, and welcomed 28 new contributors**, with even more activity happening across extension repositories.
 
-It’s been almost a year since Podman Desktop became a [**CNCF project (November 2024)**](https://www.cncf.io/projects/podman-desktop/) and what a journey it’s been! From passing [\*\*three million downloads\*\*](https://podman-desktop.io/blog/3-million) to introducing new extensions, integrations and platform support, the project has seen remarkable progress, driven by passionate contributors and an engaged community.
+It’s been almost a year since Podman Desktop became a [**CNCF Sandbox Project (November 2024)**](https://www.cncf.io/projects/podman-desktop/) and what a journey it’s been! From passing [\*\*three million downloads\*\*](https://podman-desktop.io/blog/3-million) to introducing new extensions, integrations and platform support, the project has seen remarkable progress, driven by passionate contributors and an engaged community.
 
 This blog takes you through some of the key highlights of **2025**.
 
@@ -31,13 +31,7 @@ This release introduced a new **Experimental** section in Settings, giving users
 - **Smarter cleanup:** Ability to prune only untagged images for better system hygiene.
 - **Log search:** Search directly within container or pod logs from the UI.
 
-Beyond the core app, the **BootC extension** gained traction, enabling workflows that turn containers into bootable images.
-
-### BootC 1.6 added:
-
-- Dedicated example pages with step-by-step instructions
-- A GUI-based build configuration creator
-- Experimental Linux VM support for generated images
+Beyond the core app, the [**BootC extension**](https://podman-desktop.io/blog/bootc-release-1.6) gained traction, enabling workflows that turn containers into bootable images.
 
 A great start to a year where the ecosystem began expanding beyond just the main application.
 
@@ -48,10 +42,13 @@ Spring brought rapid iteration across releases [**1.17**](https://podman-desktop
 ### Key highlights:
 
 - **Podman Engine 5.5** shipped, improving reliability and performance.
-- **BootC Extension 1.9** added advanced build options for bootable containers.
-- **AI Lab Extension 1.7.2** delivered new inference runtimes, llama-stack support, and Model Context Protocol (MCP) integration.
-- **MINC (MicroShift in Container)** brought lightweight Kubernetes clusters directly inside a Podman machine.
-- **RHEL Extension** simplified workflows for RHEL developers.
+- **Registry mirror configuration** Simplify registry mirroring setup with a dedicated command.
+- **Smoother kind cluster experience** Spin up a Kubernetes cluster effortlessly, even without a pre-installed kind binary.
+- **Switching Kubernetes namespace** Switching between Kubernetes namespaces within Podman Desktop is now available.
+- **Jobs in Kubernetes** You can now see Kubernetes jobs in our growing Kubernetes section of Podman Desktop.
+- **Experimental status bar providers enhancements** Status bar providers can be pinned and unpinned based on user preferences and the provider status icons have been updated to be easier to understand.
+
+Along with addition and updates to the extension catalog
 
 This phase showcased Podman Desktop’s versatility, evolving into a platform for container, Kubernetes, and AI development.
 
@@ -75,7 +72,7 @@ These updates reflected increasing maturity, subtle but meaningful refinements t
 September was a milestone month!
 
 - The Podman Desktop community celebrated[ **3 million downloads**](https://podman-desktop.io/blog/3-million) 🎉
-- The new [**Apple Container Extension**](https://podman-desktop.io/blog/apple-container-extension) expanded support for macOS (Apple Silicon), enabling better container visibility, management, and logs directly from the UI.
+- The new [**Apple Container Extension**](https://podman-desktop.io/blog/apple-container-extension) was added to the extension catalog, bringing native Apple [`container`](https://github.com/apple/container) support to Podman Desktop.
 
 A month to remember - platform expansion, stability improvements, and community celebration all at once.
 
@@ -117,7 +114,7 @@ Both milestones reflect a thriving community and growing trust in Podman Desktop
 
 ## Capping Off the Year: Release 1.24
 
-The final release of the year, **v1.24** wrapped up 2025 with UI enhancements and improved extension reliability—setting the foundation for the next phase of project growth.
+The final release of the year, [**v1.24**](https://podman-desktop.io/blog/podman-desktop-release-1.24) wrapped up 2025 with UI enhancements and improved extension reliability, setting the foundation for the next phase of project growth.
 
 These milestones highlight one thing: **Podman Desktop has become a global, fast-growing, community-powered project.**
 
