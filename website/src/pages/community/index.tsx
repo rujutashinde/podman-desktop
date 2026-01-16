@@ -89,7 +89,8 @@ export default function Home(): JSX.Element {
         <section id="community-events" className="mb-16 text-center">
           <h2 className="text-3xl font-bold mb-4">Attend Community Events</h2>
           <p className="mb-14">Join us for upcoming meetups, webinars, and conferences.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
             <div className="flex flex-col items-center text-center justify-center">
               <p className="mb-1 font-semibold pb-8 uppercase">View Recordings</p>
               <div className="flex items-center mb-6">
@@ -103,7 +104,7 @@ export default function Home(): JSX.Element {
                     alt="meeting thumbnail"
                     style={{
                       width: '243px',
-                      height: '134px',
+                      height: '153px',
                       borderRadius: '4px',
                       borderWidth: '2px',
                       opacity: 1,
@@ -119,19 +120,19 @@ export default function Home(): JSX.Element {
               </div>
             </div>
 
-            <div className="flex flex-col items-center text-center justify-center">
-              <p className="mb-1 font-semibold pb-18 uppercase">Join community meeting</p>
-              <div className="flex items-center gap-4 mb-8">
+            <div className="flex flex-col items-start justify-start ">
+              <p className="mb-1 font-semibold pb-16 uppercase  ">Join community meeting</p>
+              <div className="flex gap-2 mb-8">
                 <FontAwesomeIcon icon={faCalendar} />
                 <span>Every 4th Thursday of the month</span>
               </div>
 
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex gap-2 mb-8 pb-8">
                 <FontAwesomeIcon icon={faClock} />
                 <span>9–10 am EST</span>
               </div>
 
-              <div className="flex gap-4 flex-col sm:flex-row">
+              <div className="flex gap-4 flex-col sm:flex-row items-center justify-center">
                 <GradientButton
                   href="https://github.com/podman-desktop/community/issues?q=is%3Aissue%20state%3Aopen%20Agenda%20for%20Podman%20Desktop"
                   solid={true}>
