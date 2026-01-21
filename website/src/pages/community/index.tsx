@@ -4,6 +4,7 @@ import { faBluesky, faDiscord, faGithub, faLinkedin, faMastodon, faXTwitter } fr
 import { faCalendar, faClock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CommunityBanner from '@site/src/components/CommunityBanner';
+import CommunityVideoCard from '@site/src/components/CommunityVideoCard';
 import GradientButton from '@site/src/components/GradientButton';
 import PodmanMeetingBanner from '@site/src/components/PodmanMeetingBanner';
 import TailWindThemeSelector from '@site/src/components/TailWindThemeSelector';
@@ -12,6 +13,37 @@ import React from 'react';
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
+  // Video data array
+  const learningVideos = [
+    {
+      id: 'getting-started',
+      url: 'https://www.youtube.com/watch?v=2GKZa1WJnz4',
+      thumbnail: '/img/video1.png',
+      alt: 'getting-started-video',
+      caption: 'How to get started with Podman Desktop',
+    },
+    {
+      id: 'what-is-podman',
+      url: 'https://www.youtube.com/watch?v=5WML8gX2F1c',
+      thumbnail: '/img/video2.png',
+      alt: 'what-is-podman',
+      caption: 'What is Podman Desktop?',
+    },
+    {
+      id: 'zero-to-hero',
+      url: 'https://www.youtube.com/watch?v=YXfA5O5Mr18',
+      thumbnail: '/img/video3.png',
+      alt: 'zero-to-hero',
+      caption: 'Podman tutorial from zero to hero',
+    },
+    {
+      id: 'rag-app',
+      url: 'https://www.youtube.com/watch?v=mouu4PR5Dqg',
+      thumbnail: '/img/video4.png',
+      alt: 'rag-app',
+      caption: 'How to develop a RAG application using Podman AI Lab',
+    },
+  ];
 
   return (
     <Layout title={siteConfig.title} description="Podman Desktop Community page">
@@ -114,12 +146,7 @@ export default function Home(): JSX.Element {
                   <img
                     src="/img/play-overlay-button.png"
                     alt="play overlay"
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none "
-                    style={{
-                      width: '60px',
-                      height: '60px',
-                      opacity: 0.8,
-                    }}
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none w-[60px] h-[60px] opacity-80"
                   />
                 </a>
               </div>
@@ -199,130 +226,15 @@ export default function Home(): JSX.Element {
         <section id="learning-videos" className="pb-8 pt-8 bg-hero-pattern bg-no-repeat bg-center mb-2">
           <h2 className="text-3xl font-bold mb-12">Learn with Podman Desktop Videos </h2>
           <div className="grid grid-cols-1  md:grid-cols-4 gap-10 text-black dark:text-white justify-items-center">
-            <div className="flex flex-col items-center mb-6">
-              <a
-                href="https://www.youtube.com/watch?v=2GKZa1WJnz4"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full relative mb-8">
-                <img
-                  src="/img/video1.png"
-                  alt="video1-thumbnail"
-                  style={{
-                    width: '283px',
-                    height: '183px',
-                    borderRadius: '4px',
-                    borderWidth: '2px',
-                    opacity: 1,
-                  }}
-                  className="shadow-lg hover:shadow-xl transition-shadow cursor-pointer "
-                />
-                <img
-                  src="/img/play-overlay-button.png"
-                  alt="play overlay"
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                  style={{
-                    width: '60px',
-                    height: '60px',
-                    opacity: 0.8,
-                  }}
-                />
-              </a>
-              <p className="mb-14">How to get started with podman desktop</p>
-            </div>
-            <div className="flex flex-col items-center mb-4">
-              <a
-                href="https://www.youtube.com/watch?v=5WML8gX2F1c"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full relative mb-8">
-                <img
-                  src="/img/video2.png"
-                  alt="video2-thumbnail"
-                  style={{
-                    width: '283px',
-                    height: '183px',
-                    borderRadius: '4px',
-                    borderWidth: '2px',
-                    opacity: 1,
-                  }}
-                  className="shadow-lg hover:shadow-xl transition-shadow cursor-pointer "
-                />
-                <img
-                  src="/img/play-overlay-button.png"
-                  alt="play overlay"
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                  style={{
-                    width: '60px',
-                    height: '60px',
-                    opacity: 0.8,
-                  }}
-                />
-              </a>
-              <p className="mb-14">What is podman desktop?</p>
-            </div>
-            <div className="flex flex-col items-center mb-6">
-              <a
-                href="https://www.youtube.com/watch?v=YXfA5O5Mr18"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full relative mb-8">
-                <img
-                  src="/img/video3.png"
-                  alt="video3-thumbnail"
-                  style={{
-                    width: '283px',
-                    height: '183px',
-                    borderRadius: '4px',
-                    borderWidth: '2px',
-                    opacity: 1,
-                  }}
-                  className="shadow-lg hover:shadow-xl transition-shadow cursor-pointer "
-                />
-                <img
-                  src="/img/play-overlay-button.png"
-                  alt="play overlay"
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                  style={{
-                    width: '60px',
-                    height: '60px',
-                    opacity: 0.8,
-                  }}
-                />
-              </a>
-              <p className="mb-14">Podman tutorial from zero to hero</p>
-            </div>
-            <div className="flex flex-col items-center mb-6">
-              <a
-                href="https://www.youtube.com/watch?v=mouu4PR5Dqg"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full relative mb-8">
-                <img
-                  src="/img/video4.png"
-                  alt="video4-thumbnail"
-                  style={{
-                    width: '283px',
-                    height: '183px',
-                    borderRadius: '4px',
-                    borderWidth: '2px',
-                    opacity: 1,
-                  }}
-                  className="shadow-lg hover:shadow-xl transition-shadow cursor-pointer "
-                />
-                <img
-                  src="/img/play-overlay-button.png"
-                  alt="play overlay"
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                  style={{
-                    width: '60px',
-                    height: '60px',
-                    opacity: 0.8,
-                  }}
-                />
-              </a>
-              <p className="mb-14">How to develop a RAG application Podman AI Lab</p>
-            </div>
+            {learningVideos.map(video => (
+              <CommunityVideoCard
+                key={video.id}
+                url={video.url}
+                thumbnail={video.thumbnail}
+                caption={video.caption}
+                alt={video.caption}
+              />
+            ))}
           </div>
           <div className="flex justify-center">
             <GradientButton href="https://www.youtube.com/playlist?list=PLwQSOOPzuslqqUIaVWGKzO4yd37Qbt2I0">
