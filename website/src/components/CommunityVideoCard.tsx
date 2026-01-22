@@ -16,7 +16,7 @@ function CommunityVideoCard({ url, thumbnail, caption, alt }: CommunityVideoCard
         <img
           src={thumbnail}
           alt={alt}
-          className="w-[283px] h-[183px] rounded border-2 opacity-100 shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+          className="w-[243px] h-[134px] rounded border-2 opacity-100 shadow-lg hover:shadow-xl transition-shadow cursor-pointer block object-cover"
         />
         <img
           src="/img/play-overlay-button.png"

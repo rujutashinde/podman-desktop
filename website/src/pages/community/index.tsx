@@ -41,7 +41,7 @@ export default function Home(): JSX.Element {
       url: 'https://www.youtube.com/watch?v=mouu4PR5Dqg',
       thumbnail: '/img/video4.png',
       alt: 'rag-app',
-      caption: 'How to develop a RAG application using Podman AI Lab',
+      caption: 'How to develop a RAG application using Podman Desktop',
     },
   ];
 
