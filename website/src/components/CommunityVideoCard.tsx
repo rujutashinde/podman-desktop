@@ -24,7 +24,7 @@ function CommunityVideoCard({ url, thumbnail, caption, alt }: CommunityVideoCard
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none w-[60px] h-[60px] opacity-80"
         />
       </a>
-      <p className="mb-14">{caption}</p>
+      <p className="mb-4">{caption}</p>
     </div>
   );
 }

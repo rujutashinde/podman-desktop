@@ -236,7 +236,7 @@ export default function Home(): JSX.Element {
               />
             ))}
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center ">
             <GradientButton href="https://www.youtube.com/playlist?list=PLwQSOOPzuslqqUIaVWGKzO4yd37Qbt2I0">
               See More Content
             </GradientButton>
