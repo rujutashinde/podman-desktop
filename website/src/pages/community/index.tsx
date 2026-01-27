@@ -48,9 +48,9 @@ export default function Home(): JSX.Element {
 
   const adoptersLogos = [
     {
-      id: 'amedus-logo',
-      logo: '/img/adopters/amedus.png',
-      alt: 'amedus',
+      id: 'amadeus-logo',
+      logo: '/img/adopters/amadeus.png',
+      alt: 'amadeus',
       width: '167px',
       height: '68px',
     },
