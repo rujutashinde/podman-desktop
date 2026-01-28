@@ -267,7 +267,7 @@ export default function Home(): JSX.Element {
       <div className="max-w-4xl mx-auto p-6 text-center text-base">
         <section id="adopters" className="pb-8 pt-8  mb-6">
           <h2 className="text-3xl font-bold mb-6">Adopters</h2>
-          <p className="mb-14">Organizations and Companies using Podman Desktop in production</p>
+          <p className="mb-14">Organizations and companies using Podman Desktop in production.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 mb-6 text-black dark:text-white justify-items-center">
             {adoptersLogos.map(logo => (
               <AdoptersCard
