@@ -1,20 +1,26 @@
+import ThemedImage from '@theme/ThemedImage';
 import React from 'react';
 
-//Properties
 interface AdoptersCardProps {
   readonly logo: string;
+  readonly logoDark?: string; // Optional dark mode logo
   readonly alt: string;
   readonly width: string;
   readonly height: string;
 }
 
-// AdoptersCard component
-function AdoptersCard({ logo, alt, width, height }: AdoptersCardProps): JSX.Element {
+function AdoptersCard({ logo, logoDark, alt, width, height }: AdoptersCardProps): JSX.Element {
   return (
     <div className="flex items-center">
-      <img src={logo} alt={alt} style={{ width, height, opacity: 1 }} />
+      <ThemedImage
+        alt={alt}
+        sources={{
+          light: logo,
+          dark: logoDark ?? logo,
+        }}
+        style={{ width, height, opacity: 1 }}
+      />
     </div>
   );
 }
-
 export default AdoptersCard;

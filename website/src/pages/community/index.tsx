@@ -49,7 +49,8 @@ export default function Home(): JSX.Element {
   const adoptersLogos = [
     {
       id: 'amadeus-logo',
-      logo: '/img/adopters/amadeus.png',
+      logo: '/img/adopters/amadeus_logo_light.svg',
+      logoDark: '/img/adopters/amadeus_logo_dark.svg',
       alt: 'amadeus',
       width: '167px',
       height: '68px',
@@ -269,7 +270,14 @@ export default function Home(): JSX.Element {
           <p className="mb-14">Organizations and Companies using Podman Desktop in production</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 mb-6 text-black dark:text-white justify-items-center">
             {adoptersLogos.map(logo => (
-              <AdoptersCard key={logo.id} logo={logo.logo} alt={logo.alt} width={logo.width} height={logo.height} />
+              <AdoptersCard
+                key={logo.id}
+                logo={logo.logo}
+                logoDark={logo.logoDark}
+                alt={logo.alt}
+                width={logo.width}
+                height={logo.height}
+              />
             ))}
           </div>
           <div className="flex justify-center">
