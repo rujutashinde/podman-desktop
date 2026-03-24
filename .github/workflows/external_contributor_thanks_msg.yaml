@@ -120,9 +120,9 @@ jobs:
             const rawCount = "${{ steps.calc-prs.outputs.result }}";
             const mergedCount = parseInt(rawCount.trim(), 10);
 
-            const mediaOwner = context.payload.pull_request.user.login;
+            const mediaOwner = 'containers';
             const mediaRepo = 'podman-desktop-media';
-            const mediaBranch = 'thank-wf';  
+            const mediaBranch = 'thanks-workflow';  
 
             // Map milestone count to folder name
             const folderMap = {
@@ -213,7 +213,7 @@ jobs:
               console.warn(`No image URL available for milestone ${mergedCount}. No comment posted.`);
               return;
             }
-            
+
             const message = `
             ${messageHeader}
             <img src="${imageUrl}" width="500" />
