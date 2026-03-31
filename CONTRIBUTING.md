@@ -465,7 +465,7 @@ Your responsibilities include:
 - Add `dev/investigate` label if there is a need for the engineering team to take an initial look and provide some info on where the changes could be and categorize the issue in appropriate area. Add the issue to the current sprint.
 - Add `qe/review` label if we want QE to reproduce this issue.
 - Add `status/info-needed` label if logs are missing or additional info is needed from the user filing the issue
-- Add `user-reported` label if the issue is opened by someone outside the Podman Desktop organization maintainers.
+- Add `external-user` label if the issue is opened by someone outside the Podman Desktop organization maintainers.
 - Identify issues that are simple to resolve and marking them as "good first issue," thereby encouraging newcomers to contribute to the project.
 - Once categorized, remove the `status/need-triage` label.
 - Evaluate the severity of new issues. If an issue is classified as "critical" or "high priority" and requires immediate attention, tag a maintainer in the issue and notify them via the public community channel.
