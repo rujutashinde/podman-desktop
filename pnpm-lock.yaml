@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@xmldom/xmldom': ^0.8.12
+  '@xmldom/xmldom': ^0.8.13
   rollup: ^4.59.0
   react-router>path-to-regexp: ^1.9.0
   serve-handler>path-to-regexp: ^3.3.0
